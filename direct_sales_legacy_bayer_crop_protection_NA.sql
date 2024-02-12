@@ -66,15 +66,15 @@ WITH
             bcs-customer360-prod.staging_eu.SDO_PIS_UNIQUE
 WHERE
     1=1
-  AND COMP_CODE IN ('1254',
-    '1334')
-  AND SALESORG IN ('IQ09',
-    'PV09')
+  AND COMP_CODE IN ('0085',
+    '2926')
+  AND SALESORG IN ('PC09',
+    'EN09')
   AND G_CWW007 = '20'
   AND DOC_NUMBER__0DOC_CATEG NOT IN ('G',
     'B')
   AND DISTR_CHAN ='80'
-  AND DOC_TYPE = 'ZPRE'
+  AND DOC_TYPE = 'ZPRE'  -- lack of parameter for NA, can't also find  desc for IBERIA
   AND DERDATO >= '20200101'
 GROUP BY
     DERDATO,
