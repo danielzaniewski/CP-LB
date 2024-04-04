@@ -70,11 +70,10 @@ WHERE
     '2926')
   AND SALESORG IN ('PC09',
     'EN09')
-  AND G_CWW007 = '20'
-  AND DOC_NUMBER__0DOC_CATEG NOT IN ('G',
-    'B')
-  AND DISTR_CHAN ='80'
-  AND DOC_TYPE = 'ZPRE'  -- lack of parameter for NA, can't also find  desc for IBERIA
+  AND DOC_TYPE = 'Z4RT'  --Returns Into Blocked
+ -- AND G_CWW007 = '20'
+ -- AND DOC_NUMBER__0DOC_CATEG NOT IN ('G',
+ --   'B')  -- lack of parameter for NA, can't also find  desc for IBERIA
   AND DERDATO >= '20200101'
 GROUP BY
     DERDATO,
@@ -117,8 +116,7 @@ WHERE
   AND G_CWW007 = '20'
   AND DOC_NUMBER__0DOC_CATEG NOT IN ('G',
     'B')
-  AND DISTR_CHAN ='80'
-  AND DOC_TYPE = 'ZPVA'
+  AND DOC_TYPE = 'Z4SD'
   AND DERDATO >= '20200101'
 GROUP BY
     DERDATO,
@@ -158,8 +156,6 @@ WHERE
     '2926')
   AND SALESORG IN ('PC09',
     'EN09')
-  AND G_CWW007 = '20'
-  AND DISTR_CHAN ='80'
   AND ACT_GI_DTE <> '00000000'
   AND ACT_GI_DTE >= '20200101'
 GROUP BY
@@ -195,14 +191,14 @@ SELECT
     ) as numeric) AS GROSS_SALES_AMOUNT_LOCAL,
     cast(SUM(
     CASE
-    WHEN BILL_TYPE IN ('YB3D', 'YB1D', 'YG2W', 'YF2D', 'YRED', 'YL2W', 'YB1D', 'YS1D', 'YL2D') THEN NETVAL_INV
+    WHEN BILL_TYPE IN ('YB3D','YG2W','YF2D','YRED','YL2W','YB4D') THEN NETVAL_INV
     ELSE
     0
     END
     ) as numeric) AS NET_SALES_AMOUNT_LOCAL,
     cast(SUM(
     CASE
-    WHEN BILL_TYPE IN ('YB3D', 'YB1D', 'YG2W', 'YF2D', 'YRED', 'YL2W', 'YB1D', 'YS1D', 'YL2D') THEN BILL_QTY
+    WHEN BILL_TYPE IN ('YB3D','YG2W','YF2D','YRED','YL2W','YB4D') THEN BILL_QTY
     ELSE
     0
     END
@@ -219,17 +215,9 @@ WHERE
   AND SALESORG IN ('PC09',
     'EN09')
   AND G_CWW007 = '20'
-  AND DISTR_CHAN ='80'
+  AND DISTR_CHAN ='00'
   AND BILL_NUM__0DOC_CATEG <> 'U'
-  AND BILL_TYPE IN ('YB3D',
-    'YB1D',
-    'YG2W',
-    'YF2D',
-    'YRED',
-    'YL2W',
-    'YB1D',
-    'YS1D',
-    'YL2D')
+  AND BILL_TYPE IN ('YB3D','YG2W','YF2D','YRED','YL2W','YB4D')
   AND BILL_DATE >= '20200101'
 GROUP BY
     BILL_DATE,
