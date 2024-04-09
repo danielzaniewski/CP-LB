@@ -372,8 +372,8 @@ SELECT DISTINCT
     CRM.crm_account_classification_group_code AS CRM_ACCOUNT_CLASSIFICATION_GROUP_CODE,
     CRM.crm_account_classification_code AS CRM_ACCOUNT_CLASSIFICATION,
     CASE
-        WHEN CRM.opl_source_system_code like 'SAP%Q4S%' THEN 'DataOne-Q4S'
-            WHEN CRM.opl_source_system_code like 'SAP%QBC%' THEN 'DataOne-QBC'
+        WHEN CRM.opl_source_system_code like 'SAP%P4S%' THEN 'DataOne-P4S'
+            WHEN CRM.opl_source_system_code like 'SAP%PBC%' THEN 'DataOne-PBC'
             ELSE 'DataOne' END as SOURCE_SYSTEM_CODE
 ,CAST(OPL.CALENDAR_YEAR AS INTEGER) AS CALENDAR_YEAR
 ,CAST(OPL.CALENDAR_MONTH AS INTEGER) AS CALENDAR_MONTH
