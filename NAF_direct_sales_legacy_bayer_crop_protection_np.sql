@@ -341,8 +341,7 @@ ON
     CCR AS CCR
     ON
     from_currency_code = GASSP.LOCAL_CURRENCY_CODE
-    AND PARSE_DATE('%Y-%m-%d',GASSP.CALENDAR_YEAR || '-'|| GASSP.CALENDAR_MONTH || '-'|| '01') BETWEEN CCR.valid_from_date
-    AND CCR.valid_to_date
+    AND PARSE_DATE('%Y-%m-%d',GASSP.CALENDAR_YEAR || '-'|| GASSP.CALENDAR_MONTH || '-'|| '01') = CCR.valid_from_date
 GROUP BY
     GASSP.SOURCE_SYSTEM_CODE,
     GASSP.CALENDAR_MONTH,
